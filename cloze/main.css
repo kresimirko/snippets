@@ -1,0 +1,47 @@
+* {
+    font-family: sans-serif;
+    color: #eef;
+}
+
+html {
+    background-color: #223;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type=text], textarea, button {
+    background-color: #223;
+    border: 1px solid #779;
+    border-radius: 4px;
+}
+
+textarea {
+    width: 50rem;
+    height: 30rem;
+}
+
+input[type=range] {
+    width: 15rem;
+}
+
+#clozeContainer {
+    line-height: 2rem;
+    max-width: 60rem;
+}
+
+#clozeContainer span::after {
+    content: " ";
+}
+
+#clozeContainer input {
+    margin-right: 4px;
+}
+
+#clozeFinishBtn {
+    font-size: xx-large;
+    padding: 1rem;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html class="theme-dark">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Snippets - cLoze</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./main.css">
+    <script src="./main.js" type="module"></script>
+</head>
+<body>
+    <h1>cLoze - lazy cloze test generator</h1>
+    <div id="enterContainer">
+        <textarea id="textEnterArea" placeholder="Enter text here..."></textarea>
+        <br />
+        <button id="textEnterConfirm">Confirm text</button>
+    </div>
+    <div id="clozeContainer" style="display: none;">
+        <button id="resetBtn">Reset text</button>
+        <br />
+        <span>Intensity</span>
+        <input id="intensityInput" type="range">
+        <span id="intensityPercentage"></span>
+        <button id="setIntensityBtn">Apply and refresh</button>
+        <br />
+        <br />
+    </div>
+    <br />
+    <button id="clozeFinishBtn" style="display: none;">Check</button>
+    <br />
+    <span id="counter" style="display: none;">Correct count: 0</span>
+</body>
+</html>
