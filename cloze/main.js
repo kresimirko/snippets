@@ -12,6 +12,7 @@ const textEnterArea = document.getElementById("textEnterArea");
 const enterContainer = document.getElementById("enterContainer");
 const clozeContainer = document.getElementById("clozeContainer");
 const clozeFinishBtn = document.getElementById("clozeFinishBtn");
+const clozeShowBtn = document.getElementById("clozeShowBtn");
 const counterE = document.getElementById("counter");
 
 // TODO: add more punc. signs
@@ -30,6 +31,7 @@ setIntensityBtn.addEventListener("click", () => {
     location.reload();
 });
 clozeFinishBtn.addEventListener("click", finish);
+clozeShowBtn.addEventListener("click", show);
 if (!lText) {
     textEnterConfirm.addEventListener("click", () => {
         const value = textEnterArea.value;
@@ -46,6 +48,7 @@ function begin(value) {
     enterContainer.style.display = "none";
     clozeContainer.style.display = "";
     clozeFinishBtn.style.display = "";
+    clozeShowBtn.style.display = "";
 
     let textArray = value.split(" ");
 
@@ -89,6 +92,13 @@ function finish() {
             }
         }
     }
-    counterE.innerText = "Correct count: " + counter;
+    counterE.innerText = "Correct count: " + counter + "/" + (children.length - 1);
     counterE.style.display = "";
+}
+
+function show() {
+    const children = clozeContainer.getElementsByTagName("input");
+    for (const child of children) {
+        if (child.type === "text") child.value = child.getAttribute("solution");
+    }
 }
