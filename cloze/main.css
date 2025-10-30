@@ -7,10 +7,16 @@ html {
     background-color: #223;
 }
 
-body {
+button {
+    padding: 0.5rem;
+    font-size: medium;
+}
+
+body, #enterContainer, #clozeContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
 }
 
 input[type=text], textarea, button {
@@ -22,6 +28,7 @@ input[type=text], textarea, button {
 textarea {
     width: 50rem;
     height: 30rem;
+    font-size: medium;
 }
 
 input[type=range] {

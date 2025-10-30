@@ -12,24 +12,25 @@
     <h1>cLoze - lazy cloze test generator</h1>
     <div id="enterContainer">
         <textarea id="textEnterArea" placeholder="Enter text here..."></textarea>
-        <br />
         <button id="textEnterConfirm">Confirm text</button>
     </div>
     <div id="clozeContainer" style="display: none;">
         <button id="resetBtn">Reset text</button>
-        <br />
-        <span>Intensity</span>
-        <input id="intensityInput" type="range">
-        <span id="intensityPercentage"></span>
-        <button id="setIntensityBtn">Apply and refresh</button>
-        <br />
-        <br />
+        <div>
+            <span>Intensity</span>
+            <input id="intensityInput" type="range">
+            <span id="intensityPercentage"></span>
+            <button id="setIntensityBtn">Apply and refresh</button>
+        </div>
+        <div id="actualClozeArea"></div>
+        <button id="clozeFinishBtn">Check</button>
+        <div>
+            <button id="clozeShowBtn">Show correct</button>
+            <button id="clozeClearBtn">Clear</button>
+        </div>
+        <span id="counter">Correct count: 0</span>
     </div>
     <br />
-    <button id="clozeFinishBtn" style="display: none;">Check</button>
-    <br />
-    <button id="clozeShowBtn" style="display: none;">Show correct</button>
-    <br />
-    <span id="counter" style="display: none;">Correct count: 0</span>
+    <p style="opacity: 30%;">&copy; kresimirko 2025</p>
 </body>
 </html>

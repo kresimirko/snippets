@@ -3,6 +3,7 @@ console.log("started");
 const lText = localStorage.getItem("lText");
 const lIntensity = localStorage.getItem("lIntensity") ?? 50;
 
+const actualClozeArea = document.getElementById("actualClozeArea");
 const resetBtn = document.getElementById("resetBtn");
 const setIntensityBtn = document.getElementById("setIntensityBtn");
 const intensityInput = document.getElementById("intensityInput");
@@ -13,8 +14,10 @@ const enterContainer = document.getElementById("enterContainer");
 const clozeContainer = document.getElementById("clozeContainer");
 const clozeFinishBtn = document.getElementById("clozeFinishBtn");
 const clozeShowBtn = document.getElementById("clozeShowBtn");
+const clozeClearBtn = document.getElementById("clozeClearBtn");
 const counterE = document.getElementById("counter");
 
+// ! currently unused
 // TODO: add more punc. signs
 /* const pre = ["(", "[", "{"];
 const post = [".", ",", ":", ";", "-", ")", "}", "]", "\u2013", "\u2014"]; */
@@ -32,6 +35,8 @@ setIntensityBtn.addEventListener("click", () => {
 });
 clozeFinishBtn.addEventListener("click", finish);
 clozeShowBtn.addEventListener("click", show);
+clozeClearBtn.addEventListener("click", clear);
+
 if (!lText) {
     textEnterConfirm.addEventListener("click", () => {
         const value = textEnterArea.value;
@@ -47,8 +52,6 @@ if (!lText) {
 function begin(value) {
     enterContainer.style.display = "none";
     clozeContainer.style.display = "";
-    clozeFinishBtn.style.display = "";
-    clozeShowBtn.style.display = "";
 
     let textArray = value.split(" ");
 
@@ -57,48 +60,41 @@ function begin(value) {
         if (roll !== 0) {
             const newE = document.createElement("span");
             newE.innerText = word;
-            clozeContainer.appendChild(newE);
+            actualClozeArea.appendChild(newE);
         } else {
             const newE = document.createElement("input");
             newE.type = "text";
             newE.setAttribute("solution", word);
-            clozeContainer.appendChild(newE);
-            /* if (pre.includes(word[0])) {
-                const sign = document.createElement("span");
-                sign.innerText = word[0];
-                clozeContainer.appendChild(sign);
-            }
-            if (post.includes(word[word.length - 1])) {
-                const sign = document.createElement("span");
-                sign.innerText = word[word.length - 1];
-                clozeContainer.appendChild(sign);
-            } */
+            actualClozeArea.appendChild(newE);
         }
     }
 }
 
 function finish() {
-    const children = clozeContainer.getElementsByTagName("input");
+    const children = actualClozeArea.getElementsByTagName("input");
     let counter = 0;
     for (const child of children) {
-        if (child.type === "text") {
-            if (child.value === child.getAttribute("solution")) {
-                child.style.backgroundColor = "darkgreen";
-                counter++;
-            } else if (child.value === "") {
-                child.style.backgroundColor = "darkorange";
-            } else {
-                child.style.backgroundColor = "darkred";
-            }
+        if (child.value === child.getAttribute("solution")) {
+            child.style.backgroundColor = "darkgreen";
+            counter++;
+        } else if (child.value === "") {
+            child.style.backgroundColor = "darkorange";
+        } else {
+            child.style.backgroundColor = "darkred";
         }
     }
-    counterE.innerText = "Correct count: " + counter + "/" + (children.length - 1);
+    counterE.innerText = "Correct count: " + counter + "/" + children.length;
     counterE.style.display = "";
 }
 
 function show() {
-    const children = clozeContainer.getElementsByTagName("input");
-    for (const child of children) {
-        if (child.type === "text") child.value = child.getAttribute("solution");
-    }
+    const children = actualClozeArea.getElementsByTagName("input");
+    for (const child of children)
+        child.value = child.getAttribute("solution");
+}
+
+function clear() {
+    const children = actualClozeArea.getElementsByTagName("input");
+    for (const child of children)
+        child.value = "";
 }
