@@ -1,7 +1,9 @@
 console.log("started");
 
+const defaultIntensity = 8;
+
 const lText = localStorage.getItem("lText");
-const lIntensity = localStorage.getItem("lIntensity") ?? 50;
+const lIntensity = localStorage.getItem("lIntensity") ?? defaultIntensity;
 
 const actualClozeArea = document.getElementById("actualClozeArea");
 const resetBtn = document.getElementById("resetBtn");
@@ -22,7 +24,7 @@ const counterE = document.getElementById("counter");
 /* const pre = ["(", "[", "{"];
 const post = [".", ",", ":", ";", "-", ")", "}", "]", "\u2013", "\u2014"]; */
 
-intensityInput.value = lIntensity ?? 10;
+intensityInput.value = lIntensity ?? defaultIntensity;
 intensityPercentage.innerText = intensityInput.value + "%";
 
 resetBtn.addEventListener("click", () => {
