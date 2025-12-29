@@ -17,11 +17,16 @@
     <div id="clozeContainer" style="display: none;">
         <button id="resetBtn">Reset text</button>
         <div>
+            <input type="checkbox" id="ignoreHeadings" name="ignoreHeadings" checked />
+            <label for="ignoreHeadings">Ignore headings</label>
+        </div>
+        <div>
             <span>Intensity</span>
             <input id="intensityInput" type="range">
             <span id="intensityPercentage" value="8"></span>
-            <button id="setIntensityBtn">Apply and refresh</button>
         </div>
+        <button id="setIntensityBtn">Apply and refresh</button>
+
         <div id="actualClozeArea"></div>
         <button id="clozeFinishBtn">Check</button>
         <div>
@@ -31,6 +36,9 @@
         <span id="counter">Correct count: 0</span>
     </div>
     <br />
+    <p style="opacity: 50%;">now supports markdown using
+        <a href="https://github.com/markedjs/marked" target="_blank">marked!</a>
+    </p>
     <p style="opacity: 30%;">&copy; kresimirko 2025</p>
 </body>
 </html>
